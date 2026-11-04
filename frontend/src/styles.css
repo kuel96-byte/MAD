@@ -1,0 +1,140 @@
+:root {
+  --bg: #0b1020;
+  --panel: #131a2e;
+  --panel2: #1a2340;
+  --text: #dbe3f5;
+  --muted: #8492b5;
+  --accent: #4f7cff;
+  --violet: #9a6bff;
+  --red: #ff5c6c;
+  --green: #3ddc97;
+  --border: #263253;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: radial-gradient(1200px 600px at 80% -10%, #1b2a55 0%, var(--bg) 55%);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 { color: #fff; }
+.muted { color: var(--muted); font-size: 0.9em; }
+code { background: var(--panel2); padding: 1px 5px; border-radius: 4px; }
+
+/* ---------- login ---------- */
+.login-wrap {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; padding: 20px;
+}
+.login-card {
+  width: 380px; max-width: 100%;
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.login-logo { font-size: 40px; text-align: center; }
+.login-card h1 { font-size: 20px; text-align: center; margin: 6px 0 2px; }
+.subtitle { text-align: center; color: var(--muted); font-size: 13px; }
+.login-card label, .form label {
+  display: block; margin: 12px 0; font-size: 13px; color: var(--muted);
+}
+input, textarea, select {
+  width: 100%; margin-top: 4px;
+  background: var(--panel2); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 9px 11px; font-size: 14px;
+}
+input[type='range'] { padding: 0; }
+input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); }
+.hint { margin-top: 14px; font-size: 12px; color: var(--muted); text-align: center; }
+
+/* ---------- layout ---------- */
+.layout { display: flex; flex-direction: column; min-height: 100vh; }
+.topbar {
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  padding: 12px 22px; background: rgba(11, 16, 32, 0.9);
+  border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10;
+}
+.brand { font-weight: 700; }
+.brand span { color: var(--violet); }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tab {
+  background: transparent; border: 1px solid transparent; color: var(--muted);
+  padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 13px;
+}
+.tab:hover { color: var(--text); }
+.tab.active { background: var(--panel2); color: #fff; border-color: var(--border); }
+.userbox { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.username { font-weight: 600; }
+.role-badge {
+  background: var(--violet); color: #fff; border-radius: 999px;
+  font-size: 11px; padding: 3px 10px; text-transform: uppercase;
+}
+.content { flex: 1; padding: 24px; max-width: 1280px; width: 100%; margin: 0 auto; }
+.footer { padding: 14px 24px; color: var(--muted); font-size: 12px; text-align: center; border-top: 1px solid var(--border); }
+
+/* ---------- components ---------- */
+.btn {
+  background: var(--panel2); color: var(--text); border: 1px solid var(--border);
+  border-radius: 8px; padding: 9px 16px; cursor: pointer; font-size: 14px;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.primary:hover { filter: brightness(1.1); }
+.btn.ghost { background: transparent; }
+.btn.danger { background: transparent; border-color: var(--red); color: var(--red); }
+.btn.sm { padding: 4px 8px; }
+.btn.full { width: 100%; margin-top: 10px; }
+.link { background: none; border: none; color: var(--accent); cursor: pointer; padding: 0; font-size: inherit; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin: 14px 0; }
+.card {
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px;
+}
+.violet-border { border-color: var(--violet); }
+.stat-num { display: block; font-size: 34px; font-weight: 700; color: var(--accent); }
+.stat-num.red { color: var(--red); }
+.stat-num.violet { color: var(--violet); }
+.tactic b { display: block; }
+
+.two-col { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; align-items: start; }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+.form .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+
+.table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
+.table th { text-align: left; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border); padding: 8px; }
+.table td { border-bottom: 1px solid var(--border); padding: 8px; vertical-align: top; }
+
+.chip {
+  display: inline-block; background: var(--panel2); border: 1px solid var(--border);
+  border-radius: 999px; padding: 2px 9px; font-size: 12px; margin: 1px 3px 1px 0;
+}
+.sev { border-radius: 6px; padding: 2px 8px; font-weight: 700; }
+.sev-high { background: rgba(255, 92, 108, 0.15); color: var(--red); }
+.sev-mid { background: rgba(255, 190, 80, 0.15); color: #ffbe50; }
+.sev-low { background: rgba(61, 220, 151, 0.15); color: var(--green); }
+
+.alert {
+  background: rgba(255, 92, 108, 0.12); border: 1px solid var(--red);
+  color: #ffb4bc; border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 14px;
+}
+.json {
+  background: #0a0f1d; border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px; overflow: auto; max-height: 320px; font-size: 12px;
+}
+.detail { position: sticky; top: 76px; max-height: calc(100vh - 100px); overflow: auto; }
+
+.walk { display: flex; align-items: flex-end; gap: 6px; height: 120px; padding: 10px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; }
+.walk-bar { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+.walk-fill { width: 100%; background: linear-gradient(180deg, var(--violet), var(--accent)); border-radius: 4px 4px 0 0; min-height: 2px; }
+.walk-bar span { font-size: 10px; color: var(--muted); margin-top: 3px; }
+
+.qscore { font-size: 18px; margin-bottom: 10px; }
+.bar { height: 10px; background: var(--panel2); border-radius: 6px; margin-top: 6px; overflow: hidden; }
+.bar > div { height: 100%; background: linear-gradient(90deg, var(--green), #ffbe50, var(--red)); }
+
+ul { padding-left: 20px; }
+li { margin: 4px 0; }

@@ -1,0 +1,35 @@
+services:
+  # ---------------------------------------------------------- 1) FastAPI backend
+  backend:
+    build: ./backend
+    container_name: tiq-backend
+    environment:
+      DB_PATH: /data/platform.db
+      JWT_SECRET: ${JWT_SECRET:-dev-only-secret-please-change-me-0123456789abcdef}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin12345}
+      CORS_ORIGINS: http://localhost:3000,http://frontend:3000
+    volumes:
+      - backend-data:/data
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ---------------------------------------------------------- 2) React frontend
+  frontend:
+    build: ./frontend
+    container_name: tiq-frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+volumes:
+  backend-data:
